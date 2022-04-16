@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
 
 const Header = () => {
@@ -16,6 +17,7 @@ const Header = () => {
                             <Nav.Link href="#home">HOME</Nav.Link>
                             <Nav.Link href="#services">SERVICES</Nav.Link>
                             <Nav.Link href="#about">ABOUT ME</Nav.Link>
+                            <Nav.Link as={Link} to="blogs">BLOGS</Nav.Link>
                         </Nav>
                         <Nav>
                             <Nav.Link href="#login">LOGIN</Nav.Link>
