@@ -11,9 +11,10 @@ const Header = () => {
                     <Navbar.Brand href="#home">
                         <img style={{ width: "50px" }} src={logo} alt="" />
                     </Navbar.Brand>
+                    <Navbar.Brand href="#home">DENTARIO</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
+                        <Nav className="mx-auto">
                             <Nav.Link as={Link} to="home#home">HOME</Nav.Link>
                             <Nav.Link href="home#services">SERVICES</Nav.Link>
                             <Nav.Link as={Link} to="/about">ABOUT ME</Nav.Link>

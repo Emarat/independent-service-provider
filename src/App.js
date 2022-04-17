@@ -6,6 +6,7 @@ import Header from './Pages/Header/Header';
 import Footer from './Pages/Footer/Footer';
 import About from './Pages/About/About';
 import NotFound from './Pages/NotFound/NotFound';
+import Appointment from './Pages/Appointment/Appointment';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/*' element={<NotFound></NotFound>}></Route>
+        <Route path='/appointment/:appointmentId' element={<Appointment></Appointment>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
