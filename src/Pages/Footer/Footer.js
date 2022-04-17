@@ -4,9 +4,13 @@ const Footer = () => {
     const date = new Date();
     const year = date.getFullYear();
     return (
-        <footer className='text-center sticky-bottom'>
-            <h4>Copyright &copy; {year}</h4>
-        </footer>
+        <div className="d-flex flex-column min-vh-100">
+
+            <footer className="bg-primary text-center text-white mt-auto p-2">
+                <p>COPYRIGHT &copy;{year}</p>
+            </footer>
+
+        </div>
     );
 };
 
