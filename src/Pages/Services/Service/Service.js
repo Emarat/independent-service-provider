@@ -9,7 +9,7 @@ const Service = ({ service }) => {
                 <img className='rounded mx-auto d-block' src={img} alt="" />
                 <h5 className='text-center'>{name}</h5>
                 <p><small>{description}</small></p>
-                <button class="btn btn-outline-dark" type="submit">GET APPOINTMENT</button>
+                <button className="btn btn-outline-dark" type="submit">GET APPOINTMENT</button>
             </div>
         </div>
     );

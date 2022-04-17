@@ -5,8 +5,8 @@ import logo from '../../images/logo.png';
 
 const Header = () => {
     return (
-        <div>
-            <Navbar className='fixed-top' collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <>
+            <Navbar collapseOnSelect expand="lg" sticky='top' bg="primary" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">
                         <img style={{ width: "50px" }} src={logo} alt="" />
@@ -25,7 +25,7 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
+        </>
     );
 };
 
