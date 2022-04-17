@@ -6,7 +6,7 @@ import logo from '../../images/logo.png';
 const Header = () => {
     return (
         <div>
-            <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar className='fixed-top' collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">
                         <img style={{ width: "50px" }} src={logo} alt="" />
@@ -14,13 +14,13 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home">HOME</Nav.Link>
-                            <Nav.Link href="#services">SERVICES</Nav.Link>
-                            <Nav.Link href="#about">ABOUT ME</Nav.Link>
-                            <Nav.Link as={Link} to="blogs">BLOGS</Nav.Link>
+                            <Nav.Link as={Link} to="home#home">HOME</Nav.Link>
+                            <Nav.Link href="home#services">SERVICES</Nav.Link>
+                            <Nav.Link as={Link} to="/about">ABOUT ME</Nav.Link>
+                            <Nav.Link as={Link} to="/blogs">BLOGS</Nav.Link>
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#login">LOGIN</Nav.Link>
+                            <Nav.Link as={Link} to="/login">LOGIN</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
