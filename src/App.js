@@ -9,6 +9,7 @@ import NotFound from './Pages/NotFound/NotFound';
 import Appointment from './Pages/Appointment/Appointment';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
+import RequireAuth from './Pages/RequireAuth/RequireAuth';
 
 
 function App() {
@@ -23,7 +24,11 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/*' element={<NotFound></NotFound>}></Route>
-        <Route path='/appointment/:appointmentId' element={<Appointment></Appointment>}></Route>
+        <Route path='/appointment/:appointmentId' element={
+          <RequireAuth>
+            <Appointment></Appointment>
+          </RequireAuth>
+        }></Route>
       </Routes>
       <Footer></Footer>
     </div>
