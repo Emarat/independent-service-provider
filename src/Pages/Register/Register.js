@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const Register = () => {
@@ -11,7 +11,8 @@ const Register = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating] = useUpdateProfile(auth);
 
     const handleNameBlur = (event) => {
         setName(event.target.value);
@@ -27,10 +28,10 @@ const Register = () => {
     }
 
     if (user) {
-        navigate('/home');
+        console.log('user', user);
     }
 
-    const handleCreateUser = (event) => {
+    const handleCreateUser = async (event) => {
         event.preventDefault();
         if (password !== confirmPassword) {
             setError('Password Not Matched');
@@ -41,7 +42,10 @@ const Register = () => {
             return;
         }
 
-        createUserWithEmailAndPassword(email, password)
+        await createUserWithEmailAndPassword(email, password)
+        await updateProfile({ displayName: name });
+        console.log('Updated profile');
+        navigate('/home');
 
     }
 
