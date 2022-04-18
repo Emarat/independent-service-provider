@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -15,6 +17,7 @@ const Login = () => {
 
     const [signInWithGoogle, gUser, gLoading1, gError] = useSignInWithGoogle(auth);
 
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -33,6 +36,12 @@ const Login = () => {
 
     if (user) {
         navigate(from, { replace: true });
+    }
+
+    const resetPassword = async () => {
+        await sendPasswordResetEmail(email);
+        toast("Sent Email");
+
     }
 
     const handleUserSignIn = (event) => {
@@ -64,12 +73,14 @@ const Login = () => {
                                             <label className="form-label">Password</label>
                                         </div>
 
-                                        <p className="small mb-5 pb-lg-2"><a className="text-white-50 text-decoration-none" href="#!">Forgot password?</a></p>
+                                        <p className="small mb-5 pb-lg-2"><a onClick={resetPassword} className="text-white-50 text-decoration-none" href="#!">Forgot password?</a></p>
                                         <p style={{ color: 'red' }}>{error?.message}</p>
                                         {
                                             loading && <p>Loading...</p>
                                         }
                                         <button className="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+
+                                        <ToastContainer />
 
                                         <div className="d-flex justify-content-center text-center mt-4 pt-1">
                                             <a href="#!" className="text-white"><i className="fab fa-facebook-f fa-lg"></i></a>
